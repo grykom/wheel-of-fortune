@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Wheel from "./components/Wheel";
+import { GlobalStyles } from './components/GlobalStyles.style';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GlobalStyles />
+    <Wheel />
   </React.StrictMode>,
   document.getElementById('root')
 );

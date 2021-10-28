@@ -5,7 +5,7 @@ function SingleChar({ letter, finished }){
     return (<>
             { letter.name === "-" ? 
                 <br clear="all" /> : 
-                <Letter hidden={letter.name === " "} finished={finished}>{ letter.visibility ? letter.name : ' ' }</Letter> 
+                <Letter hidden={letter.name === " "} finished={ finished }>{ letter.visibility ? letter.name : ' ' }</Letter> 
             }
     </>)
 }
@@ -37,9 +37,15 @@ function Wheel() {
 
     const handleCheckLetter = (e) => {        
         e.preventDefault();
-        passwordLetterArray.map(letter => letter.name === inputLetter ? letter.visibility = true : "" )
+        const updatedArray = passwordLetterArray.map(letter => {
+            if(letter.name === inputLetter){
+                return { ...letter, visibility: true }
+            }
+            return letter
+        });
+        setPasswordLetterArray(updatedArray);
         setInputLetter("");
-        if(passwordLetterArray.filter(char => char.name !== " " && char.name !== "-" && !char.visibility).length === 0){
+        if(updatedArray.filter(char => char.name !== " " && char.name !== "-" && !char.visibility).length === 0){
             setFinished(true);
             passwordRef.current.focus();
         }

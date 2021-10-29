@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Letter, Container, Footer, Letters, InputText, Form, Button } from './Wheel.style';
+import PropTypes from "prop-types";
 
 function SingleChar({ letter, finished }){
     return (<>
@@ -97,6 +98,14 @@ function Wheel() {
             </Footer>
         </Container>
     )
+}
+
+SingleChar.propTypes = {
+    letter: PropTypes.shape({
+        name: PropTypes.string,
+        visibility: PropTypes.bool
+    }),
+    finished: PropTypes.bool
 }
 
 export default Wheel
